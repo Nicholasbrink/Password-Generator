@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <div class="wrapper">
@@ -13,22 +13,61 @@
         <h1>PASSWORD GENERATOR</h1>
       </header>
       <div class="card">
+        <textarea
+          readonly
+          id="password"
+          placeholder="Your Secure Password"
+          aria-label="Generated Password"
+        ></textarea>
+      </div>
+      <div></div>
+      <div class="card">
         <div class="card-header">
-          <h2>Select from option below to generate a unique secure password</h2>
+          <h3>Select options below to generate a unique secure password</h3>
         </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
+
+        <div id="characterSelectorSection">
+          <!--below here is the html for the password length slider-->
+          <div class="sliderContainer">
+            <div id="lengthSelector">
+              <div class="sectionText">Password length</div>
+              <span id="output"></span>
+              <input type="range" value="0" min="10" max="64" id="slider" />
+            </div>
+          </div>
         </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+
+        <!-- Toggle switch to select lowercase, uppercase,numeric and special characters -->
+        <div class="selector">
+          <label class="switch">
+            <input type="checkbox" id="lowerCaseSwitch" />
+            <span class="slider round"></span> </label
+          >Include Lowercase Letters?
+        </div>
+        <div class="selector">
+          <label class="switch">
+            <input type="checkbox" id="upperCaseSwitch" />
+            <span class="slider round"></span> </label
+          >Include Uppercase Letters?
+        </div>
+        <div class="selector">
+          <label class="switch">
+            <input type="checkbox" id="numericSwitch" />
+            <span class="slider round"></span> </label
+          >Include numeric characters?
+        </div>
+        <div class="selector">
+          <label class="switch">
+            <input type="checkbox" id="specialCharacterSwitch" />
+            <span class="slider round"></span> </label
+          >Include special characters ?
         </div>
       </div>
+
+      <div class="card-footer">
+        <button id="generate" class="btn">Generate Password</button>
+      </div>
     </div>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
