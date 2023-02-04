@@ -25,7 +25,7 @@ body {
 
 header {
   text-align: center;
-  padding: 5px;
+  padding: 20px;
   padding-top: 0px;
   color: hsl(0, 0%, 100%);
 }
@@ -38,35 +38,21 @@ header {
   text-align: center;
   color: rgb(56, 168, 148);
   font-size: 18px;
-  margin: auto;
+  margin: 0 auto;
   max-width: 800px;
-  padding: 0px 40px 20px 40px;
-  align-content: space-around;
+  padding: 30px 40px;
 }
 
 .card-header::after {
   content: " ";
   display: block;
-  max-width: 800px;
-  /* background: #e7e9eb; */
-  height: 5px;
-  padding-top: 20px;
-  align-content: space-around;
-}
-
-.card-header::before {
-  content: " ";
-  display: block;
-  max-width: 800px;
-  /* background: #e7e9eb; */
-  height: 0px;
-  padding-bottom: 5px;
-  align-content: space-around;
+  width: 100%;
+  background: #e7e9eb;
+  height: 2px;
 }
 
 .card-body {
-  min-height: 80px;
-  max-width: 800px;
+  min-height: 100px;
 }
 
 .card-footer {
@@ -76,8 +62,8 @@ header {
 .card-footer::before {
   content: " ";
   display: block;
-  max-width: 800px;
-  /* background: #e7e9eb; */
+  width: 100%;
+  background: #e7e9eb;
   height: 2px;
 }
 
@@ -117,137 +103,21 @@ button[disabled] {
   -moz-appearance: none;
   appearance: none;
   border: none;
-  display: box;
+  display: block;
   width: 100%;
-  height: 50px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  height: 25px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 85px;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px dashed #c0c7cf;
-  border-radius: 25px;
+  border-radius: 6px;
   resize: none;
   overflow: hidden;
-}
-
-/*  Range slider to select password length*/
-/* The switch - the box around the slider */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-  margin-right: 5px;
-  margin-top: 10px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The Pasword Length Range slider */
-#slidercontainer {
-  width: 100%; /* Width of the outside container */
-}
-
-/* The slider itself */
-#slider {
-  -webkit-appearance: none; /* Override default CSS styles */
-  appearance: none;
-  width: 60%; /* Full-width */
-  height: 5px; /* Specified height */
-  background: #d3d3d3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
-  transition: opacity 0.2s;
-}
-
-/* Mouse-over effects */
-#slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-#slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
-  appearance: none;
-  width: 20px; /* Set a specific slider handle width */
-  height: 20px; /* Slider handle height */
-  border-radius: 50%;
-  background: rgb(56, 168, 148); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-#slider::-moz-range-thumb {
-  width: 20px; /* Set a specific slider handle width */
-  height: 20px; /* Slider handle height */
-  background: rgb(56, 168, 148); /* Green background */
-  cursor: pointer; /* Cursor on hover */
-}
-
-/* Slider length output number */
-#output {
-  font-family: "Roboto", sans-serif;
-  letter-spacing: 1.5px;
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: 5px;
-}
-
-/* Toggle Switch for Lowercase, Uppercase, Numerical and sopecial characters*/
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(138, 136, 136);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 2px;
-  bottom: 1px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-input:checked + .slider {
-  background-color: rgb(56, 168, 148);
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(18px);
-  -ms-transform: translateX(18px);
-  transform: translateX(18px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
 }
 
 @media (max-width: 690px) {
@@ -266,8 +136,4 @@ input:checked + .slider:before {
   .btn {
     font-size: 0.8rem;
   }
-}
-
-div {
-  column-gap: 40px;
 }
