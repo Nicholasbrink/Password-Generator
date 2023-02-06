@@ -94,6 +94,8 @@ var confirmLowerCase;
 var confirmUpperCase;
 var confirmNumeric;
 var confirmSpecialcharacters;
+var masterCharacterArray = [];
+
 // Function to prompt user for password options
 
 // Prompt to confirm how many characters the user would like in their password
@@ -101,13 +103,23 @@ function getPasswordOptions() {
   var confirmLength = prompt(
     "How many characters (between 10 and 64) would you like your password to contain?"
   );
-  while (confirmLength < 10 || confirmLength > 64) {
-    alert("Password length must be between 10-64 characters - Try again");
-    var confirmLength = prompt(
-      "How many characters would you like your password to contain?"
-    );
-    return confirmLength;
+
+  if (isNaN(confirmLength)) {
+    alert("Please enter a proper number");
+    return null;
   }
+
+  if (confirmLength < 10 || confirmLength > 64) {
+    alert("Password length must be between 10-64 characters - Try again");
+    return null;
+  }
+
+  // var confirmLength = prompt(
+  //   "How many characters would you like your password to contain?"
+  // );
+  //return confirmLength;
+  //}
+
   // Determine parameters of password
   var confirmLowerCase = confirm(
     "click OK to confirm if you would like to include Lowercase characters"
@@ -121,6 +133,7 @@ function getPasswordOptions() {
   var confirmSpecialcharacters = confirm(
     "Click OK to confirm if you would like to include Special characters ($@%&*, etc)"
   );
+
   if (
     confirmLowerCase +
       confirmUpperCase +
@@ -129,25 +142,52 @@ function getPasswordOptions() {
     0
   ) {
     alert("Password must contain at least one character type");
+    return null;
   } else {
-    options.confirmLowerCase = lowerCasedCharacters;
-    options.confirmUpperCase = upperCasedCharacters;
-    options.confirmNumeric = numericCharacters;
-    options.confirmSpecialcharacters = specialCharacters;
-  }
-  //Group all arrays together
+    if (confirmUpperCase) {
+      masterCharacterArray = [...masterCharacterArray, ...upperCasedCharacters];
+    }
+    if (confirmLowerCase) {
+      masterCharacterArray = [...masterCharacterArray, ...lowerCasedCharacters];
+    }
+    if (confirmNumeric) {
+      masterCharacterArray = [...masterCharacterArray, ...numericCharacters];
+    }
+    if (confirmSpecialcharacters) {
+      masterCharacterArray = [...masterCharacterArray, ...specialCharacters];
+    }
+    // options.confirmLowerCase = lowerCasedCharacters;
+    // options.confirmUpperCase = upperCasedCharacters;
+    // options.confirmNumeric = numericCharacters;
+    // options.confirmSpecialcharacters = specialCharacters;
 
-  // Function for getting a random element from an array
-  function getRandom(arr) {
-    const randomElement = Math.floor(Math.random() * arr.length);
-    return arr[randomElement];
+    var randomPassword = "";
+    // run your random index function here
+    for (let i = 0; i < Number(confirmLength); i++) {
+      const randomCharacter = getRandom(masterCharacterArray);
+      randomPassword = randomPassword.concat(randomCharacter);
+    }
+
+    return randomPassword;
   }
 }
+
+// Function for getting a random element from an array
+function getRandom(arr) {
+  const RandomIndex = Math.floor(Math.random() * arr.length);
+  return arr[RandomIndex];
+}
+
 // Function to generate password with user input
 function generatePassword() {
-  getPasswordOptions();
+  // var allArrays = [];
 
-  return allArrays.join(""); // Turn the array elements into a string of characters. This is what will show in the text area of the webpage
+  let returnedValue = getPasswordOptions();
+  if (returnedValue === null) {
+    return generatePassword();
+  }
+
+  return returnedValue; // Turn the array elements into a string of characters. This is what will show in the text area of the webpage
 }
 
 // Get references to the #generate element
